@@ -1,0 +1,14 @@
+# Python virtual environment
+.venv
+.env
+.pyc
+__pycache__/
+
+# Data
+data/
+*.parquet
+*.csv
+
+# Docker
+postgres_data/
+
