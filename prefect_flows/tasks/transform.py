@@ -71,3 +71,48 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
     transformed_df['trip_duration_HHMMSS'] = duration_components.apply(
         lambda row: f"{row['hours']:02d}:{row['minutes']:02d}:{row['seconds']:02d}", axis=1
     )
+
+    # Changing the data types of some columns
+
+    transformed_df['rate_code_id'] = transformed_df['rate_code_id'].astype(int)
+
+    transformed_df['passenger_count'] = transformed_df['passenger_count'].astype(int)
+
+    # Mapping categorical values from the data dictionary
+
+    transformed_df['vendor_id'] = transformed_df['vendor_id'].replace({
+        1: 'Creative Mobile Technologies, LLC',
+        2: 'Curb Mobility, LLC'
+    })
+
+    transformed_df['rate_code_id'] = transformed_df['rate_code_id'].replace({
+        1: 'Standard rate',
+        2: 'JFK',
+        3: 'Newark',
+        4: 'Nassau or Westchester',
+        5: 'Negotiated fare',
+        6: 'Group ride'
+    })
+
+    transformed_df['store_and_forward_flag'] = transformed_df['store_and_forward_flag'].replace({
+        'N': 'No',
+        'Y': 'Yes'
+    })
+
+    transformed_df['payment_type'] = transformed_df['payment_type'].replace({
+        1: 'Credit card',
+        2: 'Cash',
+        3: 'No charge',
+        4: 'Dispute'
+    })
+
+    # ---- Save the transformed data ----
+    output_dir = os.getenv("TRANSFORMED_PATH")
+    os.makedirs(output_dir, exist_ok=True)
+    output_path = os.path.join(output_dir, "transformed_taxi_data_2021_01.csv")
+
+    transformed_df.to_csv(output_path, index=False)
+    logger.info(f"Transformed data saved to {output_path}")
+    logger.info(f"Transformed complete - {len(transformed_df)} rows processed")
+
+    return transformed_df
