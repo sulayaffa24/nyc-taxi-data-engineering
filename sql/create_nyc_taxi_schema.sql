@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS yellow_taxi_data_2021_01 (
+    vendor_id VARCHAR(100),
+    pickup_datetime TIMESTAMP NOT NULL,
+    dropoff_datetime TIMESTAMP NOT NULL,
+    passenger_count INTEGER,
+    trip_distance_miles NUMERIC(10,2),
+    rate_code_id VARCHAR(50),
+    store_and_forward_flag VARCHAR(10),
+    pickup_location_id INTEGER,
+    dropoff_location_id INTEGER,
+    payment_type VARCHAR(50),
+    fare_amount NUMERIC(10,2),
+    extra NUMERIC(10,2),
+    mta_tax NUMERIC(10,2),
+    tip_amount NUMERIC(10,2),
+    tolls_amount NUMERIC(10,2),
+    improvement_surcharge NUMERIC(10,2),
+    total_amount NUMERIC(10,2),
+    congestion_surcharge NUMERIC(10,2),
+    trip_duration VARCHAR(50),
+    trip_duration_HHMMSS VARCHAR(25)
+)
