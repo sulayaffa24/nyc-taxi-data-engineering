@@ -32,7 +32,7 @@ flowchart TD
 flowchart LR
     A["NYC Taxi Dataset<br/>(local file / download)"] --> B["Extract<br/>Python"]
     B --> C["Transform<br/>Pandas"]
-    C --> D[PostgreSQL (destination warehouse)]
+    C --> D"["PostgreSQL<br/>(destination warehouse)"]
     E[Prefect Flow] --> B
     E --> C
     E --> D
