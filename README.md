@@ -23,11 +23,12 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-A[NYC Taxi Dataset<br/>(local file / download)] --> B[Extract<br/>Python]
-B --> C[Transform<br/>Pandas]
-C --> D[(PostgreSQL)];
-E[Prefect Flow] --> B
-E --> C
-E --> D
-F[Docker Compose] --> D
+    A["NYC Taxi Dataset<br/>(local file / download)"] --> B["Extract<br/>Python"]
+    B --> C["Transform<br/>Pandas"]
+    C --> D[(PostgreSQL)]
+    E[Prefect Flow] --> B
+    E --> C
+    E --> D
+    F[Docker Compose] --> D
+
 ```
