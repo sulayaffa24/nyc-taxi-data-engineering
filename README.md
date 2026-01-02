@@ -41,3 +41,12 @@ flowchart LR
 ```
 
 The pipeline is orchestrated using Prefect, which coordinates extraction, transformation, and loading steps with logging and retries. PostgreSQL runs in Docker and serves as the analytical destination.
+
+## Usage Example
+`python -m prefect_flows.etl_flow`
+
+## Future Improvements
+- Add data quality checks (e.g., Great Expectations)
+- Add scheduled runs in Prefect Cloud or Prefect Server
+- Add CI/CD with GitHub Actions
+- Extend pipeline to cloud data warehouse (e.g., BigQuery)
